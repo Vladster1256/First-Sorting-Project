@@ -1,6 +1,8 @@
 package sorting.view;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -65,6 +67,23 @@ public class SortingPanel extends JPanel
 	
 	private void setupListeners()
 	{
-		
+		sortButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String rawArray = "";
+				for(int number : mainController.getWholeNumbers())
+				{
+					rawArray += number + " ";
+				}
+				mainController.getMySorter().selectionSort(mainController.getWholeNumbers());
+				rawArray += mainController.getMySorter().sortTime(mainController.getMySorter().getSortTime());
+				for(int number: mainController.getWholeNumbers())
+				{
+					rawArray += number + " ";
+				}
+				displayArea.setText(rawArray);
+			}
+		});
 	}
 }

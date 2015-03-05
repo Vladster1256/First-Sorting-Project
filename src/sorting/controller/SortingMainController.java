@@ -1,10 +1,12 @@
 package sorting.controller;
 
+import sorting.model.SortingMachine;
 import sorting.view.SortingFrame;
 
 public class SortingMainController
 {
 	public SortingFrame mainFrame;
+	private SortingMachine mySorter;
 	private int[] wholeNumbers;
 	private double[] realNumbers;
 	private String[] wordage;
@@ -12,15 +14,17 @@ public class SortingMainController
 	public SortingMainController()
 	{
 		mainFrame = new SortingFrame(this);
+		mySorter = new SortingMachine();
 	}
 	public void start()
 	{
 		fillTheArrays();
+		
 	}
 	
 	private void randomIntArray()
 	{
-		wholeNumbers = new int [20];
+		wholeNumbers = new int [2000000];
 		for(int spot = 0; spot < wholeNumbers.length; spot++)
 		{
 			wholeNumbers[spot] = (int) (Math.random() * 23432);
@@ -58,8 +62,14 @@ public class SortingMainController
 		return realNumbers;
 	}
 	public String[] getWordage()
+
 	{
 		return wordage;
+	}
+	
+	public SortingMachine getMySorter()
+	{
+		return mySorter;
 	}
 	public void setWholeNumbers(int[] wholeNumbers)
 	{
