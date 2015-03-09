@@ -6,6 +6,9 @@ public class SortingMachine
 	private long startTime;
 	private long endTime;
 	private long sortTime;
+	private long endMicroTime;
+	private long startMicroTime;
+
 	
 	public long getSortTime()
 	{
@@ -16,11 +19,15 @@ public class SortingMachine
 	{
 		String timeToSort = "";
 		
+		
+		
 		timeToSort += "Days: " + sortTime/(1000*60*60*24) + "\n";
 		timeToSort += "Hours: " + sortTime/(1000*60*60) %24 + "\n";
 		timeToSort += "Minutes: " + sortTime/(1000*60) %60 + "\n";
 		timeToSort += "Seconds: " + sortTime/(1000) %60 + "\n";
 		timeToSort += "Milliseconds: " + sortTime % 1000 + "\n";
+		timeToSort += "Microseconds: " + (endMicroTime - startMicroTime) / 1000 + "\n";
+		timeToSort += "Nanoseconds: " + (endMicroTime - startMicroTime) % 1000 + "\n";
 		
 		return timeToSort;
 	}
@@ -30,6 +37,7 @@ public class SortingMachine
 		int minimum;
 		int minimumPosition;
 		startTime = System.currentTimeMillis();
+		startMicroTime = System.nanoTime();
 		for(int position = 0; position <toBeSorted.length; position++)
 		{
 			minimumPosition = position;
@@ -48,6 +56,7 @@ public class SortingMachine
 			}
 		}
 		endTime = System.currentTimeMillis();
+		endMicroTime = System.nanoTime();
 		sortTime = endTime - startTime;
 		return toBeSorted;
 	}
@@ -57,6 +66,7 @@ public class SortingMachine
 		double minimum;
 		int minimumPosition;
 		startTime = System.currentTimeMillis();
+		startMicroTime = System.nanoTime();
 		for(int position = 0; position <toBeSorted.length; position++)
 		{
 			minimumPosition = position;
@@ -75,6 +85,7 @@ public class SortingMachine
 			}
 		}
 		endTime = System.currentTimeMillis();
+		endMicroTime = System.nanoTime();
 		sortTime = endTime - startTime;
 		
 		return toBeSorted;
@@ -85,6 +96,7 @@ public class SortingMachine
 		CaffinatedDrink maximumCaffine;
 		int maximumPosition;
 		startTime = System.currentTimeMillis();
+		startMicroTime = System.nanoTime();
 		for(int position = 0 ; position < unsortedFood.length; position ++)
 		{
 			maximumPosition = position;
@@ -104,6 +116,7 @@ public class SortingMachine
 			
 		}
 		endTime = System.currentTimeMillis();
+		endMicroTime = System.nanoTime();
 		sortTime = endTime - startTime;
 		
 		return unsortedFood;

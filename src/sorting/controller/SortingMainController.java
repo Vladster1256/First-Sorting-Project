@@ -60,6 +60,10 @@ public class SortingMainController
 		}
 		mySorter.selectionSort(realNumbers);
 		rawArray += mySorter.sortTime(mySorter.getSortTime());
+		for(double number : realNumbers)
+		{
+			rawArray += number + " ";
+		}
 		System.out.println(rawArray);
 	}
 	
