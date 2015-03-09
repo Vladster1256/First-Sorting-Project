@@ -52,6 +52,34 @@ public class SortingMachine
 		return toBeSorted;
 	}
 	
+	public double[] selectionSort(double[] toBeSorted)
+	{
+		double minimum;
+		int minimumPosition;
+		startTime = System.currentTimeMillis();
+		for(int position = 0; position <toBeSorted.length; position++)
+		{
+			minimumPosition = position;
+			minimum = toBeSorted[position];
+			for(int next = position +1 ; next<toBeSorted.length ; next++)
+			{
+				if(toBeSorted[next]<minimum)
+				{
+					minimum = toBeSorted[next];
+					minimumPosition = next;
+				}
+			}
+			if(minimumPosition != position)
+			{
+				swap(toBeSorted,position, minimumPosition);
+			}
+		}
+		endTime = System.currentTimeMillis();
+		sortTime = endTime - startTime;
+		
+		return toBeSorted;
+	}
+	
 	public CaffinatedDrink [] selectionSort(CaffinatedDrink[] unsortedFood)
 	{
 		CaffinatedDrink maximumCaffine;
@@ -90,6 +118,13 @@ public class SortingMachine
 	private void swap(CaffinatedDrink[] array,int position, int change)
 	{
 		CaffinatedDrink temp = array[position];
+		array[position] = array[change];
+		array[change] = temp;
+	}
+	
+	private void swap(double[] array, int position, int change)
+	{
+		double temp = array[position];
 		array[position] = array[change];
 		array[change] = temp;
 	}

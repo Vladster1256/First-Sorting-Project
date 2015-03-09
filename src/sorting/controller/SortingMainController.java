@@ -19,12 +19,13 @@ public class SortingMainController
 	public void start()
 	{
 		fillTheArrays();
+		sortDouble();
 		
 	}
 	
 	private void randomIntArray()
 	{
-		wholeNumbers = new int [2000000];
+		wholeNumbers = new int [20];
 		for(int spot = 0; spot < wholeNumbers.length; spot++)
 		{
 			wholeNumbers[spot] = (int) (Math.random() * 23432);
@@ -48,6 +49,18 @@ public class SortingMainController
 	{
 		randomIntArray();
 		randomDoubleArray();
+	}
+	
+	private void sortDouble()
+	{
+		String rawArray = "";
+		for(double number : realNumbers)
+		{
+			rawArray += number + " ";
+		}
+		mySorter.selectionSort(realNumbers);
+		rawArray += mySorter.sortTime(mySorter.getSortTime());
+		System.out.println(rawArray);
 	}
 	
 	
